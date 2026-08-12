@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: prosper_flow_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: prosper_secure_password_123!
+      POSTGRES_DB: prosper_flow
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: prosper_flow_server
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      DATABASE_URL: postgresql://postgres:prosper_secure_password_123!@db:5432/prosper_flow
+      JWT_SECRET: antigravity-secure-prod-key-change-me-998877!
+      CORS_ORIGINS: http://localhost:3000
+      OLLAMA_BASE_URL: http://host.docker.internal:11434/v1
+      LLM_MODEL: llama3.1
+      EMBEDDING_MODEL: nomic-embed-text
+      EMBEDDINGS_TIMEOUT: 15.0
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - db
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: prosper_flow_client
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8080/api/v1
+    depends_on:
+      - server
+
+volumes:
+  pgdata:

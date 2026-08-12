@@ -1,0 +1,25 @@
+# Dependencies
+client/node_modules/
+server/venv/
+server/__pycache__/
+*.pyc
+
+# Local databases
+server/financial_tracker.db
+server/financial_tracker.db-journal
+
+# Next.js build output
+client/.next/
+client/out/
+
+# Environment variables / Secrets
+.env
+.env.local
+client/.env.local
+server/.env
+
+# IDE / System files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
