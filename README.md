@@ -38,6 +38,10 @@ The application is structured into two main layers:
 *   **Investments Portfolio**: Track asset holdings, units owned, purchase price, and real-time current market value calculations.
 *   **Liabilities Ledger**: Log loans, education debt, and credits with EMI tracking, interest rates, and payment due dates.
 
+### 6. ⚙️ Automation & Data Import
+*   **Smart CSV Data Importer**: Upload legacy statement sheets. The backend maps columns automatically (Date, Payee, Amount) and uses vector similarity matching (cosine distance) to categorize imported items based on your past transactions.
+*   **Recurring Engine**: An automated background worker that reconciles and posts transaction instances automatically for daily, weekly, monthly, or yearly recurring templates on startup and periodic loops.
+
 ---
 
 ## 🛠️ Production Docker Deployment
