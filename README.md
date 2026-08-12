@@ -124,8 +124,9 @@ To run the frontend and backend servers separately for development and testing:
     npm run dev
     ```
 5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+# Prosper Flow - AI Personal Finance Management Engine
 
----
+[⚡ Live Demo](https://prosper-flow.vercel.app)
 
 ## 🔒 Security Practices in Production
 
