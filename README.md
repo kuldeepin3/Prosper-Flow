@@ -1,5 +1,7 @@
 # Prosper Flow - AI Personal Finance Management Engine
 
+[⚡ Live Demo](https://prosper-flow.vercel.app)
+
 Prosper Flow is a production-ready, private personal finance management system. It features transaction logging, automated budget tracking, savings goal management, vector-embedded semantic search queries, and local OCR-based transaction statement parsing.
 
 The application is structured into two main layers:
