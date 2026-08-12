@@ -1,10 +1,10 @@
-# Antigravity - AI Personal Finance Management Engine
+# Prosper Flow - AI Personal Finance Management Engine
 
-Antigravity is a production-ready, private personal finance management system. It features transaction logging, automated budget tracking, savings goal management, vector-embedded semantic search queries, and local OCR-based transaction statement parsing.
+Prosper Flow is a production-ready, private personal finance management system. It features transaction logging, automated budget tracking, savings goal management, vector-embedded semantic search queries, and local OCR-based transaction statement parsing.
 
 The application is structured into two main layers:
-*   **Frontend**: A Next.js 14 Web Application in [`client/`](file:///K:/data/Cd/Antigravity/financial%20Tracker/client)
-*   **Backend**: A FastAPI REST Service in [`server/`](file:///K:/data/Cd/Antigravity/financial%20Tracker/server)
+*   **Frontend**: A Next.js 14 Web Application in [`client/`](./client)
+*   **Backend**: A FastAPI REST Service in [`server/`](./server)
 
 ---
 
@@ -22,7 +22,7 @@ The fastest way to deploy the entire stack (Frontend, Backend, and a persistent 
     Ensure you are at the project root directory.
 
 2. **Configure Environment Variables**:
-    *   Create a `.env` file at the root or configure the variables in [`docker-compose.yml`](file:///K:/data/Cd/Antigravity/financial%20Tracker/docker-compose.yml).
+    *   Create a `.env` file at the root or configure the variables in [`docker-compose.yml`](./docker-compose.yml).
     *   Set a secure `JWT_SECRET` key for authentication signatures.
 
 3. **Enable Ollama Host Connection**:
@@ -47,7 +47,7 @@ The fastest way to deploy the entire stack (Frontend, Backend, and a persistent 
 To run the frontend and backend servers separately for development and testing:
 
 ### Backend Setup (FastAPI)
-1. Navigate to the [`server/`](file:///K:/data/Cd/Antigravity/financial%20Tracker/server) directory:
+1. Navigate to the [`server/`](./server) directory:
     ```bash
     cd server
     ```
@@ -63,7 +63,7 @@ To run the frontend and backend servers separately for development and testing:
     ```bash
     pip install -r requirements.txt
     ```
-4. Create your local configurations file `.env` based on [`.env.example`](file:///K:/data/Cd/Antigravity/financial%20Tracker/server/.env.example):
+4. Create your local configurations file `.env` based on [`.env.example`](./server/.env.example):
     ```env
     DATABASE_URL=sqlite:///./financial_tracker.db
     JWT_SECRET=your_dev_secret_key_here
@@ -75,7 +75,7 @@ To run the frontend and backend servers separately for development and testing:
     ```
 
 ### Frontend Setup (Next.js)
-1. Navigate to the [`client/`](file:///K:/data/Cd/Antigravity/financial%20Tracker/client) directory:
+1. Navigate to the [`client/`](./client) directory:
     ```bash
     cd client
     ```
@@ -83,7 +83,7 @@ To run the frontend and backend servers separately for development and testing:
     ```bash
     npm install
     ```
-3. Configure your local configuration file [`.env.local`](file:///K:/data/Cd/Antigravity/financial%20Tracker/client/.env.local):
+3. Configure your local configuration file [`.env.local`](./client/.env.local):
     ```env
     NEXT_PUBLIC_API_URL=http://localhost:8080/api/v1
     ```
