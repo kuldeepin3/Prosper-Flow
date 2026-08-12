@@ -210,6 +210,9 @@ def get_embeddings(text: str) -> list:
     """
     Get vector embeddings from the local Ollama model.
     """
+    # Groq does not support embeddings; skip to avoid log pollution
+    if "groq.com" in str(client.base_url):
+        return []
     try:
         response = client.embeddings.create(
             model=EMBEDDING_MODEL,
