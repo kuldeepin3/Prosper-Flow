@@ -1,12 +1,42 @@
 # Prosper Flow - AI Personal Finance Management Engine
 
-[⚡ Live Demo](https://prosper-flow.vercel.app)
-
-Prosper Flow is a production-ready, private personal finance management system. It features transaction logging, automated budget tracking, savings goal management, vector-embedded semantic search queries, and local OCR-based transaction statement parsing.
+Prosper Flow is a production-ready, private personal finance management system. It integrates local AI processing, document OCR extraction, privacy-shielded LLM chats, and detailed debt simulation tools to give you full visibility over your wealth journey with complete data ownership.
 
 The application is structured into two main layers:
 *   **Frontend**: A Next.js 14 Web Application in [`client/`](./client)
 *   **Backend**: A FastAPI REST Service in [`server/`](./server)
+
+---
+
+## ✨ Features & Architecture
+
+### 1. 📊 Financial Intelligence Dashboard
+*   **Ledger Aggregation**: Real-time tracking of total income, expenses, net savings, and investments.
+*   **Interactive Visual Analytics**:
+    *   **Income vs. Expense Trends**: Multi-stage area charts representing monthly cash flow.
+    *   **Expense Distribution**: Pie charts tracking spending categories.
+    *   **Budget Burn Rate**: Real-time visualization of limit consumption with warning thresholds.
+
+### 2. 🤖 Privacy-Shielded AI Copilot (RAG)
+*   **Conversational Assistant**: Chat with your ledger using natural language to extract insights (e.g., *"How much did I spend on dining out last week?"*).
+*   **Local Vector Search (RAG)**: Integrates vector embeddings using `nomic-embed-text` to query transactions semantically.
+*   **Autonomous Tool Calling**: The Copilot can create transactions, set savings goals, and adjust budgets directly based on your chat prompt.
+*   **PII Privacy Shield**: Integrates a regex anonymizer that masks emails, phone numbers, merchant names, and values *before* sending data to the LLM, de-anonymizing it locally to guarantee zero data leaks.
+
+### 3. 📄 Local Document OCR Parsing
+*   **Bank Statement Import**: Support for importing transaction statement screenshots (PNG/JPG) and PDFs.
+*   **Local Extraction**: Utilizes `EasyOCR` on the backend for raw text extraction.
+*   **Structured AI Schema**: Passes text to a local Llama model to parse raw transactions into structured JSON logs (Merchant, Date, Amount, Type) for immediate import.
+
+### 4. 📈 Runway & Wealth Projections
+*   **Runway Estimation**: Calculates monthly burn rates and projects how many months/days of liquidity your current cash and investment assets provide.
+*   **Simulated Debt Payoff Calculator**:
+    *   Compares the **Debt Snowball** (paying lowest balances first) vs. **Debt Avalanche** (paying highest interest first) models.
+    *   Calculates exact target payoff dates, total interest paid, and total interest saved.
+
+### 5. 💼 Assets & Liabilities Tracker
+*   **Investments Portfolio**: Track asset holdings, units owned, purchase price, and real-time current market value calculations.
+*   **Liabilities Ledger**: Log loans, education debt, and credits with EMI tracking, interest rates, and payment due dates.
 
 ---
 
