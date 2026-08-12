@@ -30,7 +30,11 @@ import {
   LogOut,
   BarChart2,
   Calendar,
-  AlertTriangle
+  AlertTriangle,
+  ArrowRight,
+  ChevronRight,
+  Activity,
+  Brain
 } from 'lucide-react';
 import { 
   ResponsiveContainer, 
@@ -122,6 +126,7 @@ export default function Home() {
   const [isImportingCsv, setIsImportingCsv] = useState(false);
   const [isImportingImage, setIsImportingImage] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [showAuth, setShowAuth] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -437,11 +442,116 @@ export default function Home() {
     return <div className="min-h-screen bg-[#09090b]"></div>;
   }
 
-  if (!token) {
+  if (!token && !showAuth) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-[#09090b]">
-        <div className="w-full max-w-md p-8 glass-card border border-zinc-800">
-          <div className="flex flex-col items-center mb-8 text-center">
+      <div className="min-h-screen bg-[#09090b] text-slate-100 flex flex-col font-sans selection:bg-emerald-500 selection:text-black">
+        {/* Header */}
+        <header className="w-full border-b border-zinc-900 bg-[#09090b]/80 backdrop-blur-md sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2.5">
+            <div className="p-2.5 bg-emerald-500/10 rounded-xl text-emerald-400 border border-emerald-500/20">
+              <Shield className="w-6 h-6" />
+            </div>
+            <span className="text-xl font-bold tracking-tight text-white">Prosper Flow</span>
+          </div>
+          <button 
+            onClick={() => setShowAuth(true)}
+            className="px-4 py-2 text-sm font-semibold text-zinc-300 hover:text-white bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 rounded-xl transition duration-200 flex items-center gap-1.5"
+          >
+            Sign In <ChevronRight className="w-4 h-4" />
+          </button>
+        </header>
+
+        {/* Hero Section */}
+        <main className="flex-1 max-w-7xl mx-auto px-6 py-16 flex flex-col items-center text-center">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold tracking-wider uppercase mb-6 animate-pulse">
+            <Sparkles className="w-3.5 h-3.5" /> Self-Hosted AI Personal Finance
+          </div>
+          
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight leading-tight max-w-4xl mb-6">
+            Supercharge Your <span className="bg-gradient-to-r from-emerald-400 via-teal-400 to-blue-500 bg-clip-text text-transparent">Financial Intelligence</span>
+          </h1>
+          
+          <p className="text-zinc-400 text-base md:text-lg max-w-2xl leading-relaxed mb-10">
+            Prosper Flow is a private, AI-powered personal finance engine. Track transactions, analyze budgets, simulate debt payoff, and chat with your personal AI financial copilot.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 mb-16">
+            <button 
+              onClick={() => setShowAuth(true)}
+              className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-black font-extrabold rounded-2xl shadow-lg shadow-emerald-500/10 hover:shadow-emerald-500/20 hover:scale-[1.02] active:scale-[0.98] transition duration-200 flex items-center justify-center gap-2 text-base"
+            >
+              Launch Engine <ArrowRight className="w-5 h-5" />
+            </button>
+            <a 
+              href="https://github.com/kuldeepin3/Prosper-Flow"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white font-bold rounded-2xl border border-zinc-800 hover:border-zinc-700 transition duration-200 flex items-center justify-center gap-2 text-base"
+            >
+              View on GitHub
+            </a>
+          </div>
+
+          {/* Interactive Feature Mockup Grid */}
+          <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+            {/* Feature 1 */}
+            <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 backdrop-blur-sm hover:border-zinc-700/80 transition duration-300">
+              <div className="p-3 bg-emerald-500/10 rounded-xl text-emerald-400 w-fit mb-5 border border-emerald-500/20">
+                <Brain className="w-6 h-6" />
+              </div>
+              <h3 className="text-lg font-bold text-white mb-2">AI Financial Copilot</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">
+                Chat with an intelligence layer directly connected to your ledger. Run semantic searches, ask for budget tips, and get yield calculations private to your machine.
+              </p>
+            </div>
+
+            {/* Feature 2 */}
+            <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 backdrop-blur-sm hover:border-zinc-700/80 transition duration-300">
+              <div className="p-3 bg-emerald-500/10 rounded-xl text-emerald-400 w-fit mb-5 border border-emerald-500/20">
+                <Upload className="w-6 h-6" />
+              </div>
+              <h3 className="text-lg font-bold text-white mb-2">Local OCR Parsing</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">
+                Upload images or PDFs of invoices and bank statements. The engine uses a local OCR model to extract and automatically import items directly into your ledger.
+              </p>
+            </div>
+
+            {/* Feature 3 */}
+            <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 backdrop-blur-sm hover:border-zinc-700/80 transition duration-300">
+              <div className="p-3 bg-emerald-500/10 rounded-xl text-emerald-400 w-fit mb-5 border border-emerald-500/20">
+                <Activity className="w-6 h-6" />
+              </div>
+              <h3 className="text-lg font-bold text-white mb-2">Runway Projections</h3>
+              <p className="text-zinc-400 text-sm leading-relaxed">
+                Analyze your cash flow and current assets to project your liquidity runway. Simulate debt payoff strategies (snowball vs. avalanche) to optimize your wealth journey.
+              </p>
+            </div>
+          </div>
+        </main>
+
+        {/* Footer */}
+        <footer className="w-full border-t border-zinc-950 py-8 px-6 text-center text-xs text-zinc-500 bg-[#070709] mt-auto">
+          <p>© {new Date().getFullYear()} Prosper Flow Engine. Built with Next.js, FastAPI, PostgreSQL, and Ollama.</p>
+        </footer>
+      </div>
+    );
+  }
+
+  if (!token && showAuth) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-[#09090b] px-4">
+        <div className="w-full max-w-md p-8 glass-card border border-zinc-800 relative">
+          <button 
+            onClick={() => {
+              setShowAuth(false);
+              setAuthError('');
+            }}
+            className="absolute top-6 left-6 text-zinc-500 hover:text-zinc-300 transition text-xs flex items-center gap-1"
+          >
+            ← Back
+          </button>
+
+          <div className="flex flex-col items-center mb-8 text-center mt-4">
             <div className="p-3 bg-emerald-500/10 rounded-2xl text-emerald-400 mb-4 border border-emerald-500/25">
               <Shield className="w-10 h-10" />
             </div>
