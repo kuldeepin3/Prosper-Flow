@@ -1,4 +1,7 @@
 import os
+from dotenv import load_dotenv
+load_dotenv()
+
 from openai import OpenAI
 
 # Initialize the OpenAI client pointing to the local Ollama server
